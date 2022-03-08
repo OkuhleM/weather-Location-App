@@ -1,6 +1,7 @@
 import './App.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import {render} from '@testing-library/react'
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
   const [returnWeather, setReturnWeather] = useState("");
   const [currentTemperature, setCurrentTemperature] = useState(0);
   const [townName, setTownName] = useState("");
+  const [displayIcon, setDisplayIcon] = useState(null);
 
 
   const location = (position) => {
@@ -25,8 +27,13 @@ function App() {
       );
       setTownName(weatherResult.data.name)
       setCurrentTemperature(weatherResult.data.main.temp);
-      setReturnWeather(weatherResult.data.weather[0].main)
+      setReturnWeather(weatherResult.data.weather[0].description)
       console.log('weatherResult', weatherResult.data);
+      if(weatherResult.data.weather[0].icon !== null && weatherResult.data.weather[0].icon !== ''){
+        setDisplayIcon(weatherResult.data.weather[0].icon)
+      }else{
+        setDisplayIcon("01d")
+      }
 
     } catch (error) {
       console.log(error);
@@ -40,12 +47,24 @@ function App() {
 
   return (
     <div className="App">
-<p>Your Town Name will appear here:</p>
-<br/>
-      <span>{townName}</span>
-      <h2>{currentTemperature} &#8451;</h2>
-      <p>{returnWeather}</p>
 
+<div className="card-container">
+  <div className='results'>
+      <h2>South Africa, {townName}</h2>
+      <h2>{currentTemperature} &#8451;</h2><br/>
+      <h2>{returnWeather}</h2><br/>
+      <img src={`http://openweathermap.org/img/wn/${displayIcon}@2x.png`}/>
+    </div>
+      </div>
+      <div className='daysOfTheWeek'>
+      <p>Sunday</p>
+      <p>Monday</p>
+      <p>Tuesday</p>
+      <p>Wednesday</p>
+      <p>Thursday</p>
+      <p>Friday</p>
+      <p>Sartuday</p>
+      </div>
     </div>
   );
 }

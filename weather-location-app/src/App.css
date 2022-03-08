@@ -1,9 +1,40 @@
-span{
+@import url('https://fonts.googleapis.com/css2?family=Krona+One:wght@100;400&display=swap');
+
+
+span {
   padding: 3rem 5rem;
   margin-top: 9rem;
 }
 
-body{
+body {
   text-align: center;
   margin-top: 4rem;
+  background-image: url("https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-container {
+  width: 35rem;
+  /* height: 3rem; */
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, .15);
+  backdrop-filter: blur(5px);
+  margin-top: 2rem;
+  padding-top: 3rem;
+}
+
+.daysOfTheWeek{
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto;
+  margin: 5rem 0;
+}
+
+h2{
+margin-top: 1rem;
 }
